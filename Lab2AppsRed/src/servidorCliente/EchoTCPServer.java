@@ -1,4 +1,4 @@
-package clienteServidor;
+package servidorCliente;
 
 public class EchoTCPServer {
 
