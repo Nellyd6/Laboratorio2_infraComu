@@ -1,4 +1,4 @@
-package servidorCliente;
+package ejercicio1parte1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
