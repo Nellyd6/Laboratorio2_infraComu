@@ -12,11 +12,19 @@ public class EchoTCPServer {
 	 public static void main(String[] args) throws IOException { 
 		    ServerSocket listener = new ServerSocket(3400); 
 		    System.out.println("The Echo TCP server is running on port 3400 ..."); 
+		    
+		    while ( true) {
 		 
 		    System.out.println("The server is waiting for a client."); 
 		    Socket serverSideSocket = listener.accept(); 
 		    System.out.println("A client has connected."); 
 		 
+		    String clienteIP = serverSideSocket.getInetAddress().getHostAddress();
+		    int clientePuerto = serverSideSocket.getPort();
+		    
+		    System.out.println("IP Cliente:" +clienteIP);
+		    System.out.println(" Puerto cliente: "+ clientePuerto);
+		    
 		    BufferedReader fromNetwork = new BufferedReader(new  
 		      InputStreamReader(serverSideSocket.getInputStream())); 
 		 
@@ -32,5 +40,5 @@ public class EchoTCPServer {
 		 
 		    listener.close(); 
 		  } 
-
+	 }
 }

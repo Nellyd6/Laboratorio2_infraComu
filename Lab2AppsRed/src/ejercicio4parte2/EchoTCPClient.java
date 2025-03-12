@@ -9,7 +9,7 @@ import java.net.Socket;
 public class EchoTCPClient {
 	
 	public static void main(String[] args) throws IOException { 
-		Socket clientSideSocket = new Socket("localhost", 3400); 
+		Socket clientSideSocket = new Socket("192.168.1.84", 3400); 
 		PrintWriter toNetwork = new PrintWriter(clientSideSocket.getOutputStream(), true); 
 		BufferedReader fromNetwork = new BufferedReader(new 
 		InputStreamReader(clientSideSocket.getInputStream())); 
