@@ -11,7 +11,7 @@ import java.net.Socket;
 public class EchoTCPServer {
 	
 	 public static void main(String[] args) throws IOException { 
-		    ServerSocket listener = new ServerSocket(3400, 50, InetAddress.getByName("0.0.0.0")); 
+		    ServerSocket listener = new ServerSocket(3100, 50, InetAddress.getByName("0.0.0.0")); 
 		    System.out.println("The Echo TCP server is running on port 3400 ..."); 
 		 
 		    System.out.println("The server is waiting for a client."); 
