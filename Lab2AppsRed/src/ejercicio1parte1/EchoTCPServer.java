@@ -30,7 +30,7 @@ public class EchoTCPServer {
 		    toNetwork.println(answer); 
 		    serverSideSocket.close(); 
 		 
-		    listener.close(); 
+		    listener.close();
 		  } 
 
 }
