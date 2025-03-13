@@ -15,7 +15,7 @@ public class EchoTCPServer {
 		    System.out.println("The Echo TCP server is running on port 3400 ..."); 
 		 
 		    
-		   while(true) {
+		 while(true) {
 		    System.out.println("The server is waiting for a client."); 
 		    Socket serverSideSocket = listener.accept(); 
 		    System.out.println("A client has connected."); 
