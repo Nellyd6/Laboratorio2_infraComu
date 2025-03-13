@@ -44,7 +44,7 @@ public class EchoTCPServer {
 		    toNetwork.println(answer); 
 		    }
             } catch (SocketTimeoutException e) {
-                System.out.println("⚠️ El cliente tardó más de 10 segundos en responder. Cerrando conexión...");
+                System.out.println("El cliente tardó más de 10 segundos en responder. Cerrando conexión...");
             } finally {
 		    serverSideSocket.close(); 
 		 
