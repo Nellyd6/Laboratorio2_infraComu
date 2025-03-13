@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 public class EchoTCPServer {
 	
@@ -13,9 +14,20 @@ public class EchoTCPServer {
 		    ServerSocket listener = new ServerSocket(3400); 
 		    System.out.println("The Echo TCP server is running on port 3400 ..."); 
 		 
+		    
+		   while(true) {
 		    System.out.println("The server is waiting for a client."); 
 		    Socket serverSideSocket = listener.accept(); 
 		    System.out.println("A client has connected."); 
+		    
+		    String clienteIP = serverSideSocket.getInetAddress().getHostAddress();
+            int clientePuerto = serverSideSocket.getPort();
+            System.out.println("Client IP: " + clienteIP);
+            System.out.println("Client Port: " + clientePuerto);
+            
+            serverSideSocket.setSoTimeout(10000);
+
+            try {
 		 
 		    BufferedReader fromNetwork = new BufferedReader(new  
 		      InputStreamReader(serverSideSocket.getInputStream())); 
@@ -23,14 +35,21 @@ public class EchoTCPServer {
 		    PrintWriter toNetwork = new PrintWriter(serverSideSocket.getOutputStream(), true); 
 		 
 		    String message = fromNetwork.readLine(); 
+		    
+		    if(message != null) {
 		    System.out.println("[Server] From client: " + message); 
 		 
 		    String answer = message; 
 		 
 		    toNetwork.println(answer); 
+		    }
+            } catch (SocketTimeoutException e) {
+                System.out.println("⚠️ El cliente tardó más de 10 segundos en responder. Cerrando conexión...");
+            } finally {
 		    serverSideSocket.close(); 
 		 
 		    listener.close(); 
 		  } 
-
+        }
+	 }
 }
